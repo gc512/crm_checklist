@@ -1,5 +1,6 @@
 <odoo>
 
+  <!-- Checklist tree view (list with inline edit) -->
   <record id="crm_lead_checklist_tree" model="ir.ui.view">
     <field name="name">crm.lead.checklist.tree</field>
     <field name="model">crm.lead.checklist.item</field>
@@ -10,39 +11,41 @@
     </field>
   </record>
 
+  <!-- Checklist action, used by menu -->
   <record id="crm_lead_checklist_list" model="ir.actions.act_window">
     <field name="name">Lead Checklist Items</field>
     <field name="res_model">crm.lead.checklist.item</field>
     <field name="view_mode">tree,form</field>
   </record>
 
+  <!-- extended CRM lead form view -->
   <record id="crm_lead_checklist_view_form" model="ir.ui.view">
     <field name="name">crm.lead.checklist.form</field>
     <field name="model">crm.lead</field>
     <field name="inherit_id" ref="crm.crm_lead_view_form"/>
     <field name="arch" type="xml">
+      <!-- add a new page 'Checklist' to notebook -->
       <xpath expr="//notebook" position="inside">
         <page string="Checklist">
           <group>
             <field name="progress" widget="progressbar"/>
           </group>
           <group>
-            <field name="checklist_item_ids" widget="many2many_checkboxes" options="{'no_create_edit':True}"/>
+            <field name="checklist_item_ids" widget="many2many_checkboxes"/>
+            <!-- force_save="1" readonly="1" options="{'no_create_edit':True}" -->
           </group>
         </page>
       </xpath>
     </field>
   </record>
 
+  <!-- extended CRM lead kanban view -->
   <record id="crm_lead_checklist_view_kanban" model="ir.ui.view">
     <field name="name">crm.lead.checklist.kanban</field>
     <field name="model">crm.lead</field>
     <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
-    <!--
-    <field name="mode">primary</field>
-    <field name="priority">40</field>
-    -->
     <field name="arch" type="xml">
+      <!-- add progress bar before footer on card -->
       <xpath expr="//div[hasclass('oe_kanban_footer')]" position="before">
         <div>
           <field name="progress" widget="progressbar"/>
@@ -51,6 +54,7 @@
     </field>
   </record>
 
+  <!-- Add menu item into configuration menu -->
   <menuitem
       id="crm_config_lead_checklist_items"
       name="Checklist Items"
