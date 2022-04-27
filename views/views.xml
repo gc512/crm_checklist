@@ -24,12 +24,29 @@
       <xpath expr="//notebook" position="inside">
         <page string="Checklist">
           <group>
-            <field name="progress" widget="progressbar" />
+            <field name="progress" widget="progressbar"/>
           </group>
           <group>
             <field name="checklist_item_ids" widget="many2many_checkboxes" options="{'no_create_edit':True}"/>
           </group>
         </page>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="crm_lead_checklist_view_kanban" model="ir.ui.view">
+    <field name="name">crm.lead.checklist.kanban</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+    <!--
+    <field name="mode">primary</field>
+    <field name="priority">40</field>
+    -->
+    <field name="arch" type="xml">
+      <xpath expr="//div[hasclass('oe_kanban_footer')]" position="before">
+        <div>
+          <field name="progress" widget="progressbar"/>
+        </div>
       </xpath>
     </field>
   </record>
