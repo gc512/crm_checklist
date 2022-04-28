@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import logging
 from odoo import models, fields, api
 from odoo.addons.crm.models.crm_lead import Lead
-
-_logger = logging.getLogger(__name__)
 
 class ChecklistItem(models.Model):
     _name = 'crm.lead.checklist.item'
@@ -33,7 +30,6 @@ class Checklist(models.Model):
 
     @api.onchange('checklist_item_ids')
     def _onchange_checklist(self):
-        _logger.debug('* * *  Checklist changed * * *')
         self._compute_progress()
 
         values = []
