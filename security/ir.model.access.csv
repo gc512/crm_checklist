@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-crm_lead_checklist.access_lead_checklist_item,access_crm_lead_checklist_item,crm_checklist.model_crm_lead_checklist_item,sales_team.group_sale_manager,1,1,1,1
+crm_lead_checklist.checklist_item.manager,manager_access_crm_lead_checklist_item,crm_checklist.model_crm_lead_checklist_item,sales_team.group_sale_manager,1,1,1,1
+crm_lead_checklist.checklist_item.user,user_access_crm_lead_checklist_item,crm_checklist.model_crm_lead_checklist_item,base.group_user,1,0,0,0
