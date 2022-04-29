@@ -31,8 +31,10 @@
             <field name="progress" widget="progressbar"/>
           </group>
           <group>
+            <!--
             <field name="checklist_item_ids" widget="many2many_checkboxes"/>
-            <!-- force_save="1" readonly="1" options="{'no_create_edit':True}" -->
+            -->
+            <field name="checklist" widget="one2many_list"/>
           </group>
         </page>
       </xpath>
